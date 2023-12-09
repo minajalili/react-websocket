@@ -1,9 +1,11 @@
 import React from "react";
 import useWebSocket from "~/hook/useWebSocket";
+import { useMessages } from "~/contexts/MessagesContext";
 
 const Chat = () => {
+    const { messages } = useMessages();
     const url = import.meta.env.VITE_WEBSOCKET_URL;
-    const { messages, sendMessage, error } = useWebSocket(url);
+    const { sendMessage, error } = useWebSocket(url);
 
     const handleSubmit = (event) => {
         event.preventDefault();

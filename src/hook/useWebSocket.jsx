@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useMessages } from "~/contexts/MessagesContext";
 
 function useWebSocket(url) {
-    const [messages, setMessages] = useState([]);
+    const { messages, addMessages } = useMessages();
     const [isReady, setIsReady] = useState(false);
     const [error, setError] = useState(null);
 
@@ -31,7 +32,7 @@ function useWebSocket(url) {
             if (!isReady) return;
 
             const receivedMessage = e.data;
-            setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+            addMessages(receivedMessage);
         };
     }, [isReady]);
 

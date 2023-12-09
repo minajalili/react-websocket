@@ -1,13 +1,14 @@
 import React from "react";
 
 import Chat from "~/components/Chat";
+import MessagesContextProvider from "~/contexts/MessagesContext";
 import "./App.css";
 
 const App = () => {
     return (
-        <div>
+        <MessagesContextProvider>
             <Chat />
-        </div>
+        </MessagesContextProvider>
     );
 };
 
